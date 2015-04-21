@@ -30,27 +30,24 @@ public class MainNetParams extends NetworkParameters {
         super();
         interval = INTERVAL;
         targetTimespan = TARGET_TIMESPAN;
-        maxTarget = Utils.decodeCompactBits(0x1d00ffffL);
+        maxTarget = Utils.decodeCompactBits(0x1e0fffffL);
         dumpedPrivateKeyHeader = 183;
-        addressHeader = 55;
-        p2shHeader = 117;
+        addressHeader = 18;
+        p2shHeader = 20;
         acceptableAddressCodes = new int[] { addressHeader, p2shHeader };
-        port = 9901;
-        packetMagic= 0xe6e8e9e5L;
-        genesisBlock.setDifficultyTarget(0x1d00ffffL);
-        genesisBlock.setTime(1345084287L);
-        genesisBlock.setNonce(2179302059L);
+        port = 38851;
+        packetMagic= 0xccd5dbfa;
+        genesisBlock.setDifficultyTarget(0x1e0fffffL);
+        genesisBlock.setTime(1422894606L);
+        genesisBlock.setNonce(5025607L);
         id = ID_MAINNET;
-        spendableCoinbaseDepth = 500;
+        spendableCoinbaseDepth = 50;
         String genesisHash = genesisBlock.getHashAsString();
-        checkState(genesisHash.equals("0000000032fe677166d54963b62a4677d8957e87c508eaa4fd7eb1c880cd27e3"), genesisHash);
+        checkState(genesisHash.equals("0x00000a8c92f75efe8d48923ab380a382a89b2ba2e19bd06577e11828fa8d56b8"), genesisHash);
 
-        checkpoints.put(19080, new Sha256Hash("000000000000bca54d9ac17881f94193fd6a270c1bb21c3bf0b37f588a40dbd7"));
-        checkpoints.put(30583, new Sha256Hash("d39d1481a7eecba48932ea5913be58ad3894c7ee6d5a8ba8abeb772c66a6696e"));
-        checkpoints.put(99999, new Sha256Hash("27fd5e1de16a4270eb8c68dee2754a64da6312c7c3a0e99a7e6776246be1ee3f"));
 
         dnsSeeds = new String[] {
-                "seed.ppcoin.net", "tnseed.ppcoin.net"
+                "", ""
         };
     }
 

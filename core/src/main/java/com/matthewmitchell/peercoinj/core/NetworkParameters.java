@@ -49,7 +49,7 @@ public abstract class NetworkParameters implements Serializable {
     /**
      * The alert signing key.
      */
-    public static final byte[] SATOSHI_KEY = Utils.HEX.decode("04a0a849dd49b113d3179a332dd77715c43be4d0076e2f19e66de23dd707e56630f792f298dfd209bf042bb3561f4af6983f3d81e439737ab0bf7f898fecd21aab");
+    public static final byte[] SATOSHI_KEY = Utils.HEX.decode("043fa441fd4203d03f5df2b75ea14e36f20d39f43e7a61aa7552ab9bcd7ecb0e77a3be4585b13fcdaa22ef6e51f1ff6f2929bec2494385b086fb86610e33193195");
 
     /** The string returned by getId() for the main, production network where people trade things. */
     public static final String ID_MAINNET = "org.peercoin.production";
@@ -93,7 +93,7 @@ public abstract class NetworkParameters implements Serializable {
     private static Block createGenesis(NetworkParameters n) {
         Block genesisBlock = new Block(n);
         Transaction t = new Transaction(n);
-        t.setTime(1345083810);
+        t.setTime(1422894606L);
         try {
             // A script containing the difficulty bits and the following message:
             //
@@ -110,13 +110,13 @@ public abstract class NetworkParameters implements Serializable {
         genesisBlock.addTransaction(t);
         
         String merkleHash = genesisBlock.getMerkleRoot().toString();
-        checkState(merkleHash.equals("3c2d8f85fab4d17aac558cc648a1a58acff0de6deb890c29985690052c5993c2"), merkleHash);
+        checkState(merkleHash.equals("3749a21d10b1a69712d82da0697937c54a5f06e5ddbc474e01fa195aecb66a75"), merkleHash);
         
         return genesisBlock;
     }
 
-    public static final int TARGET_TIMESPAN = 7 * 24 * 60 * 60;  // 1 day.
-    public static final int TARGET_SPACING = 10 * 60;  // 10 minutes per block.
+    public static final int TARGET_TIMESPAN = 15 * 60;  // 15 m, not 1 day.
+    public static final int TARGET_SPACING = 1 * 60;  // 1 minutes per block.
     public static final int INTERVAL = 1; // Every block
     
     /**
@@ -126,7 +126,7 @@ public abstract class NetworkParameters implements Serializable {
      */
     public static final int BIP16_ENFORCE_TIME = 1333238400;
 
-    public static final long MAX_COINS = 2000000000L;
+    public static final long MAX_COINS = 100000000L;
     public static final Coin MAX_MONEY = COIN.multiply(MAX_COINS);
 
     /** Alias for MainNetParams.get(), use that instead */
